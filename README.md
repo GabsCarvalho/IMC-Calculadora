@@ -1,90 +1,55 @@
-import tkinter as tk  # Biblioteca padrão para criar interfaces gráficas
+# Calculadora de IMC
 
-# Função para calcular o IMC
-def calcular_imc():
-    try:
-        # Obter valores dos campos
-        nome = entry_nome.get()  
-        idade = int(entry_idade.get())  
-        altura = float(entry_altura.get())
-        peso = float(entry_peso.get())
+Este projeto é uma aplicação simples em Python com interface gráfica para calcular o Índice de Massa Corporal (IMC), utilizando a biblioteca Tkinter.
 
-        # Verificar se altura e peso são válidos
-        if altura <= 0 or peso <= 0:
-            resultado_texto = "Erro: Altura ou peso inválidos!"
-        else:
-            # Cálculo do IMC
-            imc = peso / (altura ** 2)
-            
-            # Determinar a classificação do IMC
-            if imc < 18.5:
-                classificacao = "ABAIXO DO PESO"
-            elif 18.5 <= imc < 25:
-                classificacao = "NORMAL"
-            elif 25 <= imc < 30:
-                classificacao = "SOBREPESO"
-            elif 30 <= imc < 35:
-                classificacao = "OBESIDADE 1"
-            elif 35 <= imc < 40:
-                classificacao = "OBESIDADE 2"
-            else:
-                classificacao = "OBESIDADE 3"
+## Requisitos
 
-            # Montar a mensagem de resultado
-            resultado_texto = (
-                f"Olá, {nome}!\n"
-                f"Idade: {idade} anos\n"
-                f"IMC: {imc:.2f}\n"
-                f"Classificação: {classificacao}"
-            )
+- Python 3.6 ou superior
+- Tkinter (incluído na maioria das distribuições Python)
 
-        # Atualizar o texto do resultado na interface
-        label_resultado.config(text=resultado_texto)
+## Como executar
 
-    except ValueError:
-        # Caso o usuário digite algo inválido (como letras em vez de números)
-        label_resultado.config(text="Erro: Insira valores válidos!")
+1. Salve o código em um arquivo `.py`.
+2. No terminal, execute:
+   ```bash
+   python calculadora_imc.py
+   ```
 
-# Criar a janela principal
-janela = tk.Tk()
-janela.title("Calculadora de IMC")
-janela.geometry("400x400")  # Tamanho da janela
+## Interface Gráfica
 
-# Título da interface
-label_titulo = tk.Label(janela, text="Calculadora de IMC", font=("Arial", 16, "bold"))
-label_titulo.pack(pady=10)  # Adicionar espaçamento vertical
+- **Nome:** Campo para inserir o nome.
+- **Idade:** Campo para inserir a idade.
+- **Altura:** Altura em metros (ex: 1.75).
+- **Peso:** Peso em kg (ex: 70).
+- **Botão Calcular IMC:** Calcula e exibe o IMC e classificação.
 
-# Campo para o nome
-label_nome = tk.Label(janela, text="Nome:")
-label_nome.pack()
-entry_nome = tk.Entry(janela)  # Campo para o usuário digitar
-entry_nome.pack(pady=5)
+## Cálculo do IMC
 
-# Campo para a idade
-label_idade = tk.Label(janela, text="Idade:")
-label_idade.pack()
-entry_idade = tk.Entry(janela)
-entry_idade.pack(pady=5)
+Fórmula:
+\[
+IMC = \frac{peso}{altura^2}
+\]
 
-# Campo para a altura
-label_altura = tk.Label(janela, text="Altura (em metros, ex: 1.75):")
-label_altura.pack()
-entry_altura = tk.Entry(janela)
-entry_altura.pack(pady=5)
+### Classificação:
+- **Abaixo de 18.5:** Abaixo do peso
+- **18.5 - 24.9:** Peso normal
+- **25.0 - 29.9:** Sobrepeso
+- **30.0 - 34.9:** Obesidade Grau 1
+- **35.0 - 39.9:** Obesidade Grau 2
+- **40.0 ou mais:** Obesidade Grau 3
 
-# Campo para o peso
-label_peso = tk.Label(janela, text="Peso (em kg, ex: 70):")
-label_peso.pack()
-entry_peso = tk.Entry(janela)
-entry_peso.pack(pady=5)
+## Exemplo de Uso
 
-# Botão para calcular o IMC
-botao_calcular = tk.Button(janela, text="Calcular IMC", command=calcular_imc)
-botao_calcular.pack(pady=10)
+1. Execute o programa.
+2. Preencha os campos com suas informações.
+3. Clique no botão "Calcular IMC".
+4. Veja o resultado na tela com o cálculo e classificação.
 
-# Label para exibir o resultado
-label_resultado = tk.Label(janela, text="", font=("Arial", 12), justify="left")
-label_resultado.pack(pady=10)
+## Observações
 
-# Iniciar o loop principal da interface
-janela.mainloop()
+- Insira altura em metros (ex: 1.75) e peso em kg (ex: 70).
+- O programa valida entradas incorretas e exibe mensagens de erro.
+
+## Licença
+
+Projeto de uso livre, modifique conforme necessário.
