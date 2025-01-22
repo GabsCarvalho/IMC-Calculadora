@@ -7,14 +7,6 @@ Este projeto é uma aplicação simples em Python com interface gráfica para ca
 - Python 3.6 ou superior
 - Tkinter (incluído na maioria das distribuições Python)
 
-## Como executar
-
-1. Salve o código em um arquivo `.py`.
-2. No terminal, execute:
-   ```bash
-   python calculadora_imc.py
-   ```
-
 ## Interface Gráfica
 
 - **Nome:** Campo para inserir o nome.
